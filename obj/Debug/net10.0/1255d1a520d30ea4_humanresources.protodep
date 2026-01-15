@@ -1,0 +1,2 @@
+obj/Debug/net10.0/Protos/Humanresources.cs \
+obj/Debug/net10.0/Protos/HumanresourcesGrpc.cs: Protos/humanresources.proto

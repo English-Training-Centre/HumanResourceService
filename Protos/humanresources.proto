@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "HumanResourceService";
+
+package humanresources;
+
+service HumanResourcesGrpc {
+  rpc Create(GrpcHResourcesCreateRequest) returns (GrpcHResourcesCreateResponse);
+}
+
+message GrpcHResourcesCreateResponse {
+  bool isSuccess = 1;
+  optional string message = 2;
+  optional string username = 3;
+  optional string password = 4;
+}
+
+message GrpcHResourcesCreateRequest {
+  string fullName = 1;
+  string phoneNumber = 2;
+  optional string email = 3;
+  string position = 4;
+  int64 subsidy = 5;
+}

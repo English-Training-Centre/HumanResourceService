@@ -1,0 +1,21 @@
+using FluentValidation;
+using HumanResourceService.src.Application.DTOs.Commands;
+
+namespace HumanResourceService.src.Application.Validators;
+
+public sealed class UserServiceCreateValidator : AbstractValidator<UserServiceCreateRequest>
+{
+    public UserServiceCreateValidator()
+    {
+        RuleFor(v => v.FullName)
+            .NotEmpty()
+            .Length(2, 25);
+
+        RuleFor(v => v.PhoneNumber)
+            .NotEmpty()
+            .MaximumLength(9);
+
+        RuleFor(v => v.Role)
+            .NotEmpty();
+    }
+}

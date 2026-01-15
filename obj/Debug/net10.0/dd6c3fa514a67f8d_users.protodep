@@ -1,0 +1,4 @@
+obj/Debug/net10.0/Users.cs \
+obj/Debug/net10.0/UsersGrpc.cs: /home/ramadan/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/empty.proto\
+ /home/ramadan/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/timestamp.proto\
+ ../UserService/Protos/users.proto
