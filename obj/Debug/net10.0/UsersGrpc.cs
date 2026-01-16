@@ -46,21 +46,13 @@ namespace UserService {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::UserService.GrpcUserGetAllListResponse> __Marshaller_users_GrpcUserGetAllListResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UserService.GrpcUserGetAllListResponse.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::UserService.GrpcUserCreateRequest> __Marshaller_users_GrpcUserCreateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UserService.GrpcUserCreateRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::UserService.GrpcUserAuthCreatedResponse> __Marshaller_users_GrpcUserAuthCreatedResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UserService.GrpcUserAuthCreatedResponse.Parser));
-
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::UserService.GrpcUserGetAllListResponse> __Method_GetAll = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::UserService.GrpcUserGetAllListResponse>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "GetAll",
-        __Marshaller_google_protobuf_Empty,
-        __Marshaller_users_GrpcUserGetAllListResponse);
+    static readonly grpc::Marshaller<global::UserService.GrpcGetUsersByIdsRequest> __Marshaller_users_GrpcGetUsersByIdsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UserService.GrpcGetUsersByIdsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::UserService.GrpcUserGetAllListResponse> __Marshaller_users_GrpcUserGetAllListResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UserService.GrpcUserGetAllListResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::UserService.GrpcUserCreateRequest, global::UserService.GrpcUserAuthCreatedResponse> __Method_Create = new grpc::Method<global::UserService.GrpcUserCreateRequest, global::UserService.GrpcUserAuthCreatedResponse>(
@@ -69,6 +61,14 @@ namespace UserService {
         "Create",
         __Marshaller_users_GrpcUserCreateRequest,
         __Marshaller_users_GrpcUserAuthCreatedResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::UserService.GrpcGetUsersByIdsRequest, global::UserService.GrpcUserGetAllListResponse> __Method_GetAllByIds = new grpc::Method<global::UserService.GrpcGetUsersByIdsRequest, global::UserService.GrpcUserGetAllListResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAllByIds",
+        __Marshaller_users_GrpcGetUsersByIdsRequest,
+        __Marshaller_users_GrpcUserGetAllListResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -104,26 +104,6 @@ namespace UserService {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::UserService.GrpcUserGetAllListResponse GetAll(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetAll(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::UserService.GrpcUserGetAllListResponse GetAll(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_GetAll, null, options, request);
-      }
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::UserService.GrpcUserGetAllListResponse> GetAllAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetAllAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::UserService.GrpcUserGetAllListResponse> GetAllAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetAll, null, options, request);
-      }
-      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::UserService.GrpcUserAuthCreatedResponse Create(global::UserService.GrpcUserCreateRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Create(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -142,6 +122,26 @@ namespace UserService {
       public virtual grpc::AsyncUnaryCall<global::UserService.GrpcUserAuthCreatedResponse> CreateAsync(global::UserService.GrpcUserCreateRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Create, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::UserService.GrpcUserGetAllListResponse GetAllByIds(global::UserService.GrpcGetUsersByIdsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllByIds(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::UserService.GrpcUserGetAllListResponse GetAllByIds(global::UserService.GrpcGetUsersByIdsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllByIds, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::UserService.GrpcUserGetAllListResponse> GetAllByIdsAsync(global::UserService.GrpcGetUsersByIdsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllByIdsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::UserService.GrpcUserGetAllListResponse> GetAllByIdsAsync(global::UserService.GrpcGetUsersByIdsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllByIds, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

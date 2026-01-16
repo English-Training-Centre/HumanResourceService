@@ -11,7 +11,7 @@ public sealed class UserGrpcServiceClient(UsersGrpc.UsersGrpcClient client, ILog
     private readonly UsersGrpc.UsersGrpcClient _client = client;
     private readonly ILogger<UserGrpcServiceClient> _logger = logger;
 
-    public async Task<UserServiceCreateResponse> CreateAsync(UserServiceCreateRequest request, CancellationToken ct)
+    public async Task<UserServiceCreateResponse> Create(UserServiceCreateRequest request, CancellationToken ct)
     {
         var grpcRequest = new GrpcUserCreateRequest
         {
@@ -51,5 +51,42 @@ public sealed class UserGrpcServiceClient(UsersGrpc.UsersGrpcClient client, ILog
             Username = grpcResponse.Username ?? string.Empty,
             Password = grpcResponse.Password ?? string.Empty
         };
+    }
+
+    public async Task<IReadOnlyList<UserServiceGetAllResponse>> GetAllByIds(IReadOnlyCollection<Guid> ids, CancellationToken ct)
+    {
+        if (ids == null || ids.Count == 0)
+            return [];
+
+        var grpcRequest = new GrpcGetUsersByIdsRequest
+        {
+            Ids = { ids.Select(id => id.ToString()) }
+        };
+
+        GrpcUserGetAllListResponse grpcResponse;
+        try
+        {
+            grpcResponse = await _client.GetAllByIdsAsync(grpcRequest, new CallOptions(
+                deadline: DateTime.UtcNow.AddSeconds(10),
+                cancellationToken: ct
+            ));
+        }
+        catch (RpcException ex)
+        {
+            _logger.LogError(ex, "- UserGrpcServiceClient -> GetAllByIds(...)");
+            return [];
+        }
+
+        return [.. grpcResponse.Users
+            .Select(u => new UserServiceGetAllResponse(
+                Guid.Parse(u.Id),
+                u.FullName,
+                u.Username,
+                u.PhoneNumber,
+                u.Email.Length == 0 ? null : u.Email,
+                u.Role,
+                string.IsNullOrEmpty(u.ImageUrl) ? null : u.ImageUrl,
+                u.IsActive
+            ))];
     }
 }

@@ -4,8 +4,11 @@ option csharp_namespace = "HumanResourceService";
 
 package humanresources;
 
+import "google/protobuf/empty.proto"; 
+
 service HumanResourcesGrpc {
   rpc Create(GrpcHResourcesCreateRequest) returns (GrpcHResourcesCreateResponse);
+  rpc GetAll(google.protobuf.Empty) returns (GrpcEmployeeGetAllResponse);
 }
 
 message GrpcHResourcesCreateResponse {
@@ -13,6 +16,23 @@ message GrpcHResourcesCreateResponse {
   optional string message = 2;
   optional string username = 3;
   optional string password = 4;
+}
+
+message GrpcEmployeeWithUserGetResponse {
+  string Id = 1;
+  optional string fullName = 2;
+  optional string username = 3;
+  optional string phoneNumber = 4;
+  optional string email = 5;
+  optional string role = 6;
+  optional string imageUrl = 7;
+  bool isActive = 8;
+  string position = 9;
+  int64 subsidy = 10;
+}
+
+message GrpcEmployeeGetAllResponse {
+  repeated GrpcEmployeeWithUserGetResponse employees = 1;
 }
 
 message GrpcHResourcesCreateRequest {

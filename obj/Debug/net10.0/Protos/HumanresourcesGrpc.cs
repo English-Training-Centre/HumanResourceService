@@ -49,6 +49,10 @@ namespace HumanResourceService {
     static readonly grpc::Marshaller<global::HumanResourceService.GrpcHResourcesCreateRequest> __Marshaller_humanresources_GrpcHResourcesCreateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::HumanResourceService.GrpcHResourcesCreateRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::HumanResourceService.GrpcHResourcesCreateResponse> __Marshaller_humanresources_GrpcHResourcesCreateResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::HumanResourceService.GrpcHResourcesCreateResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::HumanResourceService.GrpcEmployeeGetAllResponse> __Marshaller_humanresources_GrpcEmployeeGetAllResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::HumanResourceService.GrpcEmployeeGetAllResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::HumanResourceService.GrpcHResourcesCreateRequest, global::HumanResourceService.GrpcHResourcesCreateResponse> __Method_Create = new grpc::Method<global::HumanResourceService.GrpcHResourcesCreateRequest, global::HumanResourceService.GrpcHResourcesCreateResponse>(
@@ -57,6 +61,14 @@ namespace HumanResourceService {
         "Create",
         __Marshaller_humanresources_GrpcHResourcesCreateRequest,
         __Marshaller_humanresources_GrpcHResourcesCreateResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::HumanResourceService.GrpcEmployeeGetAllResponse> __Method_GetAll = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::HumanResourceService.GrpcEmployeeGetAllResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAll",
+        __Marshaller_google_protobuf_Empty,
+        __Marshaller_humanresources_GrpcEmployeeGetAllResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -74,6 +86,12 @@ namespace HumanResourceService {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::HumanResourceService.GrpcEmployeeGetAllResponse> GetAll(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -82,7 +100,8 @@ namespace HumanResourceService {
     public static grpc::ServerServiceDefinition BindService(HumanResourcesGrpcBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_Create, serviceImpl.Create).Build();
+          .AddMethod(__Method_Create, serviceImpl.Create)
+          .AddMethod(__Method_GetAll, serviceImpl.GetAll).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -93,6 +112,7 @@ namespace HumanResourceService {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, HumanResourcesGrpcBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::HumanResourceService.GrpcHResourcesCreateRequest, global::HumanResourceService.GrpcHResourcesCreateResponse>(serviceImpl.Create));
+      serviceBinder.AddMethod(__Method_GetAll, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Protobuf.WellKnownTypes.Empty, global::HumanResourceService.GrpcEmployeeGetAllResponse>(serviceImpl.GetAll));
     }
 
   }

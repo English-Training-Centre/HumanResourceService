@@ -5,5 +5,6 @@ namespace HumanResourceService.src.Application.Interfaces;
 
 public interface IUserGrpcServiceClient
 {
-    Task<UserServiceCreateResponse> CreateAsync(UserServiceCreateRequest request, CancellationToken ct);
+    Task<UserServiceCreateResponse> Create(UserServiceCreateRequest request, CancellationToken ct);
+    Task<IReadOnlyList<UserServiceGetAllResponse>> GetAllByIds(IReadOnlyCollection<Guid> ids, CancellationToken ct);
 }

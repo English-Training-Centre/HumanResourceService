@@ -6,4 +6,5 @@ namespace HumanResourceService.src.Application.Interfaces;
 public interface IEmployeeHandler
 {
     Task<HResourcesCreateResponse> CreateAsync(HResourcesCreateRequest request, CancellationToken ct);
+    Task<IReadOnlyList<EmployeeWithUserGetResponse>> GetAllWithUserAsync(CancellationToken ct);
 }

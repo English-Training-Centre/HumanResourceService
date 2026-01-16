@@ -1,2 +1,3 @@
 obj/Debug/net10.0/Protos/Humanresources.cs \
-obj/Debug/net10.0/Protos/HumanresourcesGrpc.cs: Protos/humanresources.proto
+obj/Debug/net10.0/Protos/HumanresourcesGrpc.cs: /home/ramadan/.nuget/packages/grpc.tools/2.76.0/build/native/include/google/protobuf/empty.proto\
+ Protos/humanresources.proto

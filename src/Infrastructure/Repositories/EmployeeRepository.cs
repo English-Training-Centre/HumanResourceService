@@ -1,4 +1,6 @@
+using Dapper;
 using HumanResourceService.src.Application.DTOs.Commands;
+using HumanResourceService.src.Application.DTOs.Queries;
 using HumanResourceService.src.Application.Interfaces;
 using Npgsql;
 
@@ -37,6 +39,26 @@ public sealed class EmployeeRepository(IPostgresDB db, ILogger<EmployeeRepositor
         {
             _logger.LogError(ex, " - Unexpected error during transaction operation.");
             return 0;
+        }
+    }
+
+    public async Task<IReadOnlyList<EmployeeGetAllResponse>> GetAllAsync(CancellationToken ct)
+    {
+        const string sql = @"SELECT id As Id, user_id As UserId, position As Position, subsidy As Subsidy FROM tbEmployees;";
+
+        try
+        {
+            return (await _db.QueryAsync<EmployeeGetAllResponse>(sql, new{}, ct)).AsList();
+        }
+        catch (PostgresException pgEx)
+        {
+            _logger.LogError(pgEx, " - Unexpected PostgreSQL Error");
+            return [];
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, " - Unexpected error during transaction operation.");
+            return [];
         }
     }
 }

@@ -40,4 +40,34 @@ public sealed class HResourceGrpcService(IEmployeeHandler employeeHandler, ILogg
             throw new RpcException(new Status(StatusCode.Internal, "Failed to create user"));
         }
     }
+
+    public override async Task<GrpcEmployeeGetAllResponse> GetAll(Google.Protobuf.WellKnownTypes.Empty request, ServerCallContext context)
+    {
+        try
+        {
+            var result = await _employeeHandler.GetAllWithUserAsync(context.CancellationToken);
+
+            var protoResponse = new GrpcEmployeeGetAllResponse();
+            protoResponse.Employees.AddRange(result.Select(u => new GrpcEmployeeWithUserGetResponse
+            {
+                Id = u.Id.ToString(),
+                FullName = u.FullName ?? string.Empty,
+                Username = u.Username ?? string.Empty,
+                PhoneNumber = u.PhoneNumber ?? string.Empty,
+                Email = u.Email ?? string.Empty,                
+                Role = u.Role ?? string.Empty,
+                ImageUrl = u.ImageUrl ?? string.Empty,
+                IsActive = u.IsActive,
+                Position = u.Position ?? string.Empty,
+                Subsidy = u.Subsidy
+            }));
+
+            return protoResponse;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error: HResourceGrpcService -> GetAll(....)");
+            throw new RpcException(new Status(StatusCode.Internal, "Failed to get all"));
+        }
+    }
 }
