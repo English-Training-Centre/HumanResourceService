@@ -29,27 +29,26 @@ namespace UserService {
             "CgZ1c2VySWQYAyABKAlIAIgBARIVCgh1c2VybmFtZRgEIAEoCUgBiAEBEhUK",
             "CHBhc3N3b3JkGAUgASgJSAKIAQFCCQoHX3VzZXJJZEILCglfdXNlcm5hbWVC",
             "CwoJX3Bhc3N3b3JkIkoKGkdycGNVc2VyR2V0QWxsTGlzdFJlc3BvbnNlEiwK",
-            "BXVzZXJzGAEgAygLMh0udXNlcnMuR3JwY1VzZXJHZXRBbGxSZXNwb25zZSLE",
-            "AQoWR3JwY1VzZXJHZXRBbGxSZXNwb25zZRIKCgJpZBgBIAEoCRIRCglmdWxs",
-            "X25hbWUYAiABKAkSEAoIdXNlcm5hbWUYAyABKAkSEgoFZW1haWwYBCABKAlI",
-            "AIgBARIUCgxwaG9uZV9udW1iZXIYBSABKAkSDAoEcm9sZRgGIAEoCRIWCglp",
-            "bWFnZV91cmwYByABKAlIAYgBARIRCglpc19hY3RpdmUYCCABKAhCCAoGX2Vt",
-            "YWlsQgwKCl9pbWFnZV91cmwiagoVR3JwY1VzZXJDcmVhdGVSZXF1ZXN0EhAK",
-            "CGZ1bGxOYW1lGAEgASgJEhMKC3Bob25lTnVtYmVyGAIgASgJEhIKBWVtYWls",
-            "GAMgASgJSACIAQESDAoEcm9sZRgEIAEoCUIICgZfZW1haWwiJwoYR3JwY0dl",
-            "dFVzZXJzQnlJZHNSZXF1ZXN0EgsKA2lkcxgBIAMoCTKqAQoJVXNlcnNHcnBj",
-            "EkoKBkNyZWF0ZRIcLnVzZXJzLkdycGNVc2VyQ3JlYXRlUmVxdWVzdBoiLnVz",
-            "ZXJzLkdycGNVc2VyQXV0aENyZWF0ZWRSZXNwb25zZRJRCgtHZXRBbGxCeUlk",
-            "cxIfLnVzZXJzLkdycGNHZXRVc2Vyc0J5SWRzUmVxdWVzdBohLnVzZXJzLkdy",
-            "cGNVc2VyR2V0QWxsTGlzdFJlc3BvbnNlQg6qAgtVc2VyU2VydmljZWIGcHJv",
-            "dG8z"));
+            "BXVzZXJzGAEgAygLMh0udXNlcnMuR3JwY1VzZXJHZXRBbGxSZXNwb25zZSK/",
+            "AQoWR3JwY1VzZXJHZXRBbGxSZXNwb25zZRIKCgJpZBgBIAEoCRIQCghmdWxs",
+            "TmFtZRgCIAEoCRIQCgh1c2VybmFtZRgDIAEoCRISCgVlbWFpbBgEIAEoCUgA",
+            "iAEBEhMKC3Bob25lTnVtYmVyGAUgASgJEgwKBHJvbGUYBiABKAkSFQoIaW1h",
+            "Z2VVcmwYByABKAlIAYgBARIQCghpc0FjdGl2ZRgIIAEoCEIICgZfZW1haWxC",
+            "CwoJX2ltYWdlVXJsImwKFUdycGNVc2VyQ3JlYXRlUmVxdWVzdBIQCghmdWxs",
+            "TmFtZRgBIAEoCRITCgtwaG9uZU51bWJlchgCIAEoCRISCgVlbWFpbBgDIAEo",
+            "CUgAiAEBEg4KBnJvbGVJZBgEIAEoCUIICgZfZW1haWwiJwoYR3JwY0dldFVz",
+            "ZXJzQnlJZHNSZXF1ZXN0EgsKA2lkcxgBIAMoCTKqAQoJVXNlcnNHcnBjEkoK",
+            "BkNyZWF0ZRIcLnVzZXJzLkdycGNVc2VyQ3JlYXRlUmVxdWVzdBoiLnVzZXJz",
+            "LkdycGNVc2VyQXV0aENyZWF0ZWRSZXNwb25zZRJRCgtHZXRBbGxCeUlkcxIf",
+            "LnVzZXJzLkdycGNHZXRVc2Vyc0J5SWRzUmVxdWVzdBohLnVzZXJzLkdycGNV",
+            "c2VyR2V0QWxsTGlzdFJlc3BvbnNlQg6qAgtVc2VyU2VydmljZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::UserService.GrpcUserAuthCreatedResponse), global::UserService.GrpcUserAuthCreatedResponse.Parser, new[]{ "IsSuccess", "Message", "UserId", "Username", "Password" }, new[]{ "UserId", "Username", "Password" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::UserService.GrpcUserGetAllListResponse), global::UserService.GrpcUserGetAllListResponse.Parser, new[]{ "Users" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::UserService.GrpcUserGetAllResponse), global::UserService.GrpcUserGetAllResponse.Parser, new[]{ "Id", "FullName", "Username", "Email", "PhoneNumber", "Role", "ImageUrl", "IsActive" }, new[]{ "Email", "ImageUrl" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::UserService.GrpcUserCreateRequest), global::UserService.GrpcUserCreateRequest.Parser, new[]{ "FullName", "PhoneNumber", "Email", "Role" }, new[]{ "Email" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::UserService.GrpcUserCreateRequest), global::UserService.GrpcUserCreateRequest.Parser, new[]{ "FullName", "PhoneNumber", "Email", "RoleId" }, new[]{ "Email" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::UserService.GrpcGetUsersByIdsRequest), global::UserService.GrpcGetUsersByIdsRequest.Parser, new[]{ "Ids" }, null, null, null, null)
           }));
     }
@@ -696,7 +695,7 @@ namespace UserService {
       }
     }
 
-    /// <summary>Field number for the "full_name" field.</summary>
+    /// <summary>Field number for the "fullName" field.</summary>
     public const int FullNameFieldNumber = 2;
     private string fullName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -746,7 +745,7 @@ namespace UserService {
       email_ = null;
     }
 
-    /// <summary>Field number for the "phone_number" field.</summary>
+    /// <summary>Field number for the "phoneNumber" field.</summary>
     public const int PhoneNumberFieldNumber = 5;
     private string phoneNumber_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -770,7 +769,7 @@ namespace UserService {
       }
     }
 
-    /// <summary>Field number for the "image_url" field.</summary>
+    /// <summary>Field number for the "imageUrl" field.</summary>
     public const int ImageUrlFieldNumber = 7;
     private readonly static string ImageUrlDefaultValue = "";
 
@@ -783,20 +782,20 @@ namespace UserService {
         imageUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
-    /// <summary>Gets whether the "image_url" field is set</summary>
+    /// <summary>Gets whether the "imageUrl" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasImageUrl {
       get { return imageUrl_ != null; }
     }
-    /// <summary>Clears the value of the "image_url" field</summary>
+    /// <summary>Clears the value of the "imageUrl" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearImageUrl() {
       imageUrl_ = null;
     }
 
-    /// <summary>Field number for the "is_active" field.</summary>
+    /// <summary>Field number for the "isActive" field.</summary>
     public const int IsActiveFieldNumber = 8;
     private bool isActive_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1155,7 +1154,7 @@ namespace UserService {
       fullName_ = other.fullName_;
       phoneNumber_ = other.phoneNumber_;
       email_ = other.email_;
-      role_ = other.role_;
+      roleId_ = other.roleId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1215,15 +1214,15 @@ namespace UserService {
       email_ = null;
     }
 
-    /// <summary>Field number for the "role" field.</summary>
-    public const int RoleFieldNumber = 4;
-    private string role_ = "";
+    /// <summary>Field number for the "roleId" field.</summary>
+    public const int RoleIdFieldNumber = 4;
+    private string roleId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Role {
-      get { return role_; }
+    public string RoleId {
+      get { return roleId_; }
       set {
-        role_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        roleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1245,7 +1244,7 @@ namespace UserService {
       if (FullName != other.FullName) return false;
       if (PhoneNumber != other.PhoneNumber) return false;
       if (Email != other.Email) return false;
-      if (Role != other.Role) return false;
+      if (RoleId != other.RoleId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1256,7 +1255,7 @@ namespace UserService {
       if (FullName.Length != 0) hash ^= FullName.GetHashCode();
       if (PhoneNumber.Length != 0) hash ^= PhoneNumber.GetHashCode();
       if (HasEmail) hash ^= Email.GetHashCode();
-      if (Role.Length != 0) hash ^= Role.GetHashCode();
+      if (RoleId.Length != 0) hash ^= RoleId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1287,9 +1286,9 @@ namespace UserService {
         output.WriteRawTag(26);
         output.WriteString(Email);
       }
-      if (Role.Length != 0) {
+      if (RoleId.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(Role);
+        output.WriteString(RoleId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1313,9 +1312,9 @@ namespace UserService {
         output.WriteRawTag(26);
         output.WriteString(Email);
       }
-      if (Role.Length != 0) {
+      if (RoleId.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(Role);
+        output.WriteString(RoleId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1336,8 +1335,8 @@ namespace UserService {
       if (HasEmail) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
       }
-      if (Role.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Role);
+      if (RoleId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoleId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1360,8 +1359,8 @@ namespace UserService {
       if (other.HasEmail) {
         Email = other.Email;
       }
-      if (other.Role.Length != 0) {
-        Role = other.Role;
+      if (other.RoleId.Length != 0) {
+        RoleId = other.RoleId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1395,7 +1394,7 @@ namespace UserService {
             break;
           }
           case 34: {
-            Role = input.ReadString();
+            RoleId = input.ReadString();
             break;
           }
         }
@@ -1430,7 +1429,7 @@ namespace UserService {
             break;
           }
           case 34: {
-            Role = input.ReadString();
+            RoleId = input.ReadString();
             break;
           }
         }

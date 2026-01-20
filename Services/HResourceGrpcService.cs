@@ -11,13 +11,19 @@ public sealed class HResourceGrpcService(IEmployeeHandler employeeHandler, ILogg
 
     public override async Task<GrpcHResourcesCreateResponse> Create(GrpcHResourcesCreateRequest request, ServerCallContext context)
     {
+        if (!Guid.TryParse(request.RoleId, out var roleId))
+        {
+            throw new RpcException(new Status(StatusCode.Internal, "RoleId Invalid..."));
+        }
+
         try
         {
             var parameter = new HResourcesCreateRequest
             (
                 request.FullName,
                 request.PhoneNumber,
-                request.Email,                
+                request.Email, 
+                roleId,               
                 request.Position,
                 request.Subsidy
             );

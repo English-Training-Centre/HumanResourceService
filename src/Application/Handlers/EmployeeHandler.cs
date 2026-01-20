@@ -17,7 +17,7 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
             request.FullName,
             request.PhoneNumber,
             request.Email,
-            "employee"
+            request.RoleId
         );
 
         try

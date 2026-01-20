@@ -13,9 +13,9 @@ public sealed class UserServiceCreateValidator : AbstractValidator<UserServiceCr
 
         RuleFor(v => v.PhoneNumber)
             .NotEmpty()
-            .MaximumLength(9);
+            .MaximumLength(20);
 
-        RuleFor(v => v.Role)
+        RuleFor(v => v.RoleId)
             .NotEmpty();
     }
 }

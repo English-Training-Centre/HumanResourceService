@@ -9,19 +9,16 @@ public sealed class HResourcesCreateValidator : AbstractValidator<HResourcesCrea
     {
         RuleFor(v => v.FullName)
             .NotEmpty()
-            .NotNull()
             .Length(2, 25);
 
         RuleFor(v => v.PhoneNumber)
             .NotEmpty()
-            .NotNull();
+            .MaximumLength(20);
 
         RuleFor(v => v.Position)
-            .NotEmpty()
-            .NotNull();
+            .NotEmpty();
 
         RuleFor(v => v.Subsidy)
-            .NotEmpty()
-            .NotNull();
+            .NotEmpty();
     }
 }

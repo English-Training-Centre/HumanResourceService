@@ -38,22 +38,22 @@ namespace HumanResourceService {
             "CgxfcGhvbmVOdW1iZXJCCAoGX2VtYWlsQgcKBV9yb2xlQgsKCV9pbWFnZVVy",
             "bCJgChpHcnBjRW1wbG95ZWVHZXRBbGxSZXNwb25zZRJCCgllbXBsb3llZXMY",
             "ASADKAsyLy5odW1hbnJlc291cmNlcy5HcnBjRW1wbG95ZWVXaXRoVXNlckdl",
-            "dFJlc3BvbnNlIoUBChtHcnBjSFJlc291cmNlc0NyZWF0ZVJlcXVlc3QSEAoI",
+            "dFJlc3BvbnNlIpUBChtHcnBjSFJlc291cmNlc0NyZWF0ZVJlcXVlc3QSEAoI",
             "ZnVsbE5hbWUYASABKAkSEwoLcGhvbmVOdW1iZXIYAiABKAkSEgoFZW1haWwY",
-            "AyABKAlIAIgBARIQCghwb3NpdGlvbhgEIAEoCRIPCgdzdWJzaWR5GAUgASgD",
-            "QggKBl9lbWFpbDLHAQoSSHVtYW5SZXNvdXJjZXNHcnBjEmMKBkNyZWF0ZRIr",
-            "Lmh1bWFucmVzb3VyY2VzLkdycGNIUmVzb3VyY2VzQ3JlYXRlUmVxdWVzdBos",
-            "Lmh1bWFucmVzb3VyY2VzLkdycGNIUmVzb3VyY2VzQ3JlYXRlUmVzcG9uc2US",
-            "TAoGR2V0QWxsEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5GiouaHVtYW5yZXNv",
-            "dXJjZXMuR3JwY0VtcGxveWVlR2V0QWxsUmVzcG9uc2VCF6oCFEh1bWFuUmVz",
-            "b3VyY2VTZXJ2aWNlYgZwcm90bzM="));
+            "AyABKAlIAIgBARIOCgZyb2xlSWQYBCABKAkSEAoIcG9zaXRpb24YBSABKAkS",
+            "DwoHc3Vic2lkeRgGIAEoA0IICgZfZW1haWwyxwEKEkh1bWFuUmVzb3VyY2Vz",
+            "R3JwYxJjCgZDcmVhdGUSKy5odW1hbnJlc291cmNlcy5HcnBjSFJlc291cmNl",
+            "c0NyZWF0ZVJlcXVlc3QaLC5odW1hbnJlc291cmNlcy5HcnBjSFJlc291cmNl",
+            "c0NyZWF0ZVJlc3BvbnNlEkwKBkdldEFsbBIWLmdvb2dsZS5wcm90b2J1Zi5F",
+            "bXB0eRoqLmh1bWFucmVzb3VyY2VzLkdycGNFbXBsb3llZUdldEFsbFJlc3Bv",
+            "bnNlQheqAhRIdW1hblJlc291cmNlU2VydmljZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::HumanResourceService.GrpcHResourcesCreateResponse), global::HumanResourceService.GrpcHResourcesCreateResponse.Parser, new[]{ "IsSuccess", "Message", "Username", "Password" }, new[]{ "Message", "Username", "Password" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::HumanResourceService.GrpcEmployeeWithUserGetResponse), global::HumanResourceService.GrpcEmployeeWithUserGetResponse.Parser, new[]{ "Id", "FullName", "Username", "PhoneNumber", "Email", "Role", "ImageUrl", "IsActive", "Position", "Subsidy" }, new[]{ "FullName", "Username", "PhoneNumber", "Email", "Role", "ImageUrl" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::HumanResourceService.GrpcEmployeeGetAllResponse), global::HumanResourceService.GrpcEmployeeGetAllResponse.Parser, new[]{ "Employees" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::HumanResourceService.GrpcHResourcesCreateRequest), global::HumanResourceService.GrpcHResourcesCreateRequest.Parser, new[]{ "FullName", "PhoneNumber", "Email", "Position", "Subsidy" }, new[]{ "Email" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::HumanResourceService.GrpcHResourcesCreateRequest), global::HumanResourceService.GrpcHResourcesCreateRequest.Parser, new[]{ "FullName", "PhoneNumber", "Email", "RoleId", "Position", "Subsidy" }, new[]{ "Email" }, null, null, null)
           }));
     }
     #endregion
@@ -1251,6 +1251,7 @@ namespace HumanResourceService {
       fullName_ = other.fullName_;
       phoneNumber_ = other.phoneNumber_;
       email_ = other.email_;
+      roleId_ = other.roleId_;
       position_ = other.position_;
       subsidy_ = other.subsidy_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1312,8 +1313,20 @@ namespace HumanResourceService {
       email_ = null;
     }
 
+    /// <summary>Field number for the "roleId" field.</summary>
+    public const int RoleIdFieldNumber = 4;
+    private string roleId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RoleId {
+      get { return roleId_; }
+      set {
+        roleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "position" field.</summary>
-    public const int PositionFieldNumber = 4;
+    public const int PositionFieldNumber = 5;
     private string position_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1325,7 +1338,7 @@ namespace HumanResourceService {
     }
 
     /// <summary>Field number for the "subsidy" field.</summary>
-    public const int SubsidyFieldNumber = 5;
+    public const int SubsidyFieldNumber = 6;
     private long subsidy_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1354,6 +1367,7 @@ namespace HumanResourceService {
       if (FullName != other.FullName) return false;
       if (PhoneNumber != other.PhoneNumber) return false;
       if (Email != other.Email) return false;
+      if (RoleId != other.RoleId) return false;
       if (Position != other.Position) return false;
       if (Subsidy != other.Subsidy) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1366,6 +1380,7 @@ namespace HumanResourceService {
       if (FullName.Length != 0) hash ^= FullName.GetHashCode();
       if (PhoneNumber.Length != 0) hash ^= PhoneNumber.GetHashCode();
       if (HasEmail) hash ^= Email.GetHashCode();
+      if (RoleId.Length != 0) hash ^= RoleId.GetHashCode();
       if (Position.Length != 0) hash ^= Position.GetHashCode();
       if (Subsidy != 0L) hash ^= Subsidy.GetHashCode();
       if (_unknownFields != null) {
@@ -1398,12 +1413,16 @@ namespace HumanResourceService {
         output.WriteRawTag(26);
         output.WriteString(Email);
       }
-      if (Position.Length != 0) {
+      if (RoleId.Length != 0) {
         output.WriteRawTag(34);
+        output.WriteString(RoleId);
+      }
+      if (Position.Length != 0) {
+        output.WriteRawTag(42);
         output.WriteString(Position);
       }
       if (Subsidy != 0L) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteInt64(Subsidy);
       }
       if (_unknownFields != null) {
@@ -1428,12 +1447,16 @@ namespace HumanResourceService {
         output.WriteRawTag(26);
         output.WriteString(Email);
       }
-      if (Position.Length != 0) {
+      if (RoleId.Length != 0) {
         output.WriteRawTag(34);
+        output.WriteString(RoleId);
+      }
+      if (Position.Length != 0) {
+        output.WriteRawTag(42);
         output.WriteString(Position);
       }
       if (Subsidy != 0L) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteInt64(Subsidy);
       }
       if (_unknownFields != null) {
@@ -1454,6 +1477,9 @@ namespace HumanResourceService {
       }
       if (HasEmail) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
+      }
+      if (RoleId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoleId);
       }
       if (Position.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Position);
@@ -1481,6 +1507,9 @@ namespace HumanResourceService {
       }
       if (other.HasEmail) {
         Email = other.Email;
+      }
+      if (other.RoleId.Length != 0) {
+        RoleId = other.RoleId;
       }
       if (other.Position.Length != 0) {
         Position = other.Position;
@@ -1520,10 +1549,14 @@ namespace HumanResourceService {
             break;
           }
           case 34: {
+            RoleId = input.ReadString();
+            break;
+          }
+          case 42: {
             Position = input.ReadString();
             break;
           }
-          case 40: {
+          case 48: {
             Subsidy = input.ReadInt64();
             break;
           }
@@ -1559,10 +1592,14 @@ namespace HumanResourceService {
             break;
           }
           case 34: {
+            RoleId = input.ReadString();
+            break;
+          }
+          case 42: {
             Position = input.ReadString();
             break;
           }
-          case 40: {
+          case 48: {
             Subsidy = input.ReadInt64();
             break;
           }

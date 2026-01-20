@@ -18,7 +18,7 @@ public sealed class UserGrpcServiceClient(UsersGrpc.UsersGrpcClient client, ILog
             FullName = request.FullName,
             PhoneNumber = request.PhoneNumber,
             Email = request.Email,
-            Role = request.Role
+            RoleId = request.RoleId.ToString()
         };
 
         GrpcUserAuthCreatedResponse grpcResponse;

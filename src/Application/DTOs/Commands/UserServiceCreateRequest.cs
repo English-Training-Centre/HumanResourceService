@@ -5,5 +5,5 @@ public sealed record UserServiceCreateRequest
     string FullName,
     string PhoneNumber,
     string? Email,
-    string Role
+    Guid RoleId
 );

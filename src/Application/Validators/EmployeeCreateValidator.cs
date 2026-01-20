@@ -8,17 +8,12 @@ public sealed class EmployeeCreateValidator : AbstractValidator<EmployeeCreateRe
     public EmployeeCreateValidator()
     {
         RuleFor(v => v.UserId)
-            .NotEmpty()
-            .WithMessage("User ID is required.")
-            .NotNull()
-            .WithMessage("User ID is required.");
+            .NotEmpty();
 
         RuleFor(v => v.Position)
-            .NotEmpty()
-            .NotNull();
+            .NotEmpty();
 
         RuleFor(v => v.Subsidy)
-            .NotEmpty()
-            .NotNull();
+            .NotEmpty();
     }
 }

@@ -39,6 +39,7 @@ message GrpcHResourcesCreateRequest {
   string fullName = 1;
   string phoneNumber = 2;
   optional string email = 3;
-  string position = 4;
-  int64 subsidy = 5;
+  string roleId = 4;
+  string position = 5;
+  int64 subsidy = 6;
 }
