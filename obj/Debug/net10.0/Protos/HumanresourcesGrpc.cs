@@ -53,6 +53,12 @@ namespace HumanResourceService {
     static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::HumanResourceService.GrpcEmployeeGetAllResponse> __Marshaller_humanresources_GrpcEmployeeGetAllResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::HumanResourceService.GrpcEmployeeGetAllResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::HumanResourceService.GrpcHResourcesUpdateRequest> __Marshaller_humanresources_GrpcHResourcesUpdateRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::HumanResourceService.GrpcHResourcesUpdateRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::HumanResourceService.GrpcHResourcesResponseDTO> __Marshaller_humanresources_GrpcHResourcesResponseDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::HumanResourceService.GrpcHResourcesResponseDTO.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::HumanResourceService.GrpcHResourcesDeleteRequest> __Marshaller_humanresources_GrpcHResourcesDeleteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::HumanResourceService.GrpcHResourcesDeleteRequest.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::HumanResourceService.GrpcHResourcesCreateRequest, global::HumanResourceService.GrpcHResourcesCreateResponse> __Method_Create = new grpc::Method<global::HumanResourceService.GrpcHResourcesCreateRequest, global::HumanResourceService.GrpcHResourcesCreateResponse>(
@@ -69,6 +75,22 @@ namespace HumanResourceService {
         "GetAll",
         __Marshaller_google_protobuf_Empty,
         __Marshaller_humanresources_GrpcEmployeeGetAllResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::HumanResourceService.GrpcHResourcesUpdateRequest, global::HumanResourceService.GrpcHResourcesResponseDTO> __Method_Update = new grpc::Method<global::HumanResourceService.GrpcHResourcesUpdateRequest, global::HumanResourceService.GrpcHResourcesResponseDTO>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Update",
+        __Marshaller_humanresources_GrpcHResourcesUpdateRequest,
+        __Marshaller_humanresources_GrpcHResourcesResponseDTO);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::HumanResourceService.GrpcHResourcesDeleteRequest, global::HumanResourceService.GrpcHResourcesResponseDTO> __Method_Delete = new grpc::Method<global::HumanResourceService.GrpcHResourcesDeleteRequest, global::HumanResourceService.GrpcHResourcesResponseDTO>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Delete",
+        __Marshaller_humanresources_GrpcHResourcesDeleteRequest,
+        __Marshaller_humanresources_GrpcHResourcesResponseDTO);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -92,6 +114,18 @@ namespace HumanResourceService {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::HumanResourceService.GrpcHResourcesResponseDTO> Update(global::HumanResourceService.GrpcHResourcesUpdateRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::HumanResourceService.GrpcHResourcesResponseDTO> Delete(global::HumanResourceService.GrpcHResourcesDeleteRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -101,7 +135,9 @@ namespace HumanResourceService {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Create, serviceImpl.Create)
-          .AddMethod(__Method_GetAll, serviceImpl.GetAll).Build();
+          .AddMethod(__Method_GetAll, serviceImpl.GetAll)
+          .AddMethod(__Method_Update, serviceImpl.Update)
+          .AddMethod(__Method_Delete, serviceImpl.Delete).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -113,6 +149,8 @@ namespace HumanResourceService {
     {
       serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::HumanResourceService.GrpcHResourcesCreateRequest, global::HumanResourceService.GrpcHResourcesCreateResponse>(serviceImpl.Create));
       serviceBinder.AddMethod(__Method_GetAll, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Protobuf.WellKnownTypes.Empty, global::HumanResourceService.GrpcEmployeeGetAllResponse>(serviceImpl.GetAll));
+      serviceBinder.AddMethod(__Method_Update, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::HumanResourceService.GrpcHResourcesUpdateRequest, global::HumanResourceService.GrpcHResourcesResponseDTO>(serviceImpl.Update));
+      serviceBinder.AddMethod(__Method_Delete, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::HumanResourceService.GrpcHResourcesDeleteRequest, global::HumanResourceService.GrpcHResourcesResponseDTO>(serviceImpl.Delete));
     }
 
   }

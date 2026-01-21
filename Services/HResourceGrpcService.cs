@@ -13,7 +13,7 @@ public sealed class HResourceGrpcService(IEmployeeHandler employeeHandler, ILogg
     {
         if (!Guid.TryParse(request.RoleId, out var roleId))
         {
-            throw new RpcException(new Status(StatusCode.Internal, "RoleId Invalid..."));
+            throw new RpcException(new Status(StatusCode.Internal, "Role ID Invalid..."));
         }
 
         try
@@ -43,7 +43,7 @@ public sealed class HResourceGrpcService(IEmployeeHandler employeeHandler, ILogg
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error: HResourceGrpcService -> Create(....)");
-            throw new RpcException(new Status(StatusCode.Internal, "Failed to create user"));
+            throw new RpcException(new Status(StatusCode.Internal, "Failed to create employee"));
         }
     }
 
@@ -74,6 +74,74 @@ public sealed class HResourceGrpcService(IEmployeeHandler employeeHandler, ILogg
         {
             _logger.LogError(ex, "Error: HResourceGrpcService -> GetAll(....)");
             throw new RpcException(new Status(StatusCode.Internal, "Failed to get all"));
+        }
+    }
+
+    public override async Task<GrpcHResourcesResponseDTO> Update(GrpcHResourcesUpdateRequest request, ServerCallContext context)
+    {
+        if (!Guid.TryParse(request.Id, out var id))
+        {
+            throw new RpcException(new Status(StatusCode.Internal, "Employee ID Invalid..."));
+        }
+
+        if (!Guid.TryParse(request.RoleId, out var roleId))
+        {
+            throw new RpcException(new Status(StatusCode.Internal, "Role ID Invalid..."));
+        }
+
+        try
+        {
+            var parameter = new HResourcesUpdateRequest
+            (
+                id,
+                request.FullName,
+                request.PhoneNumber,
+                request.Email, 
+                roleId,               
+                request.Position,
+                request.Subsidy
+            );
+
+            var result = await _employeeHandler.UpdateAsync(parameter, context.CancellationToken);
+
+            var protoResponse = new GrpcHResourcesResponseDTO
+            {
+                IsSuccess = result.IsSuccess,
+                Message = result.Message
+            };
+
+            return protoResponse;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error: HResourceGrpcService -> Update(....)");
+            throw new RpcException(new Status(StatusCode.Internal, "Failed to update employee"));
+        }
+    }
+
+    public override async Task<GrpcHResourcesResponseDTO> Delete(GrpcHResourcesDeleteRequest request, ServerCallContext context)
+    {
+        if (!Guid.TryParse(request.Id, out var id))
+        {
+            throw new RpcException(new Status(StatusCode.Internal, "Employee ID Invalid..."));
+        }
+
+        try
+        {
+            var result = await _employeeHandler.DeleteAsync(id, context.CancellationToken);
+
+            var protoResponse = new GrpcHResourcesResponseDTO
+            {
+                IsSuccess = result.IsSuccess,
+                Message = result.Message
+            };
+
+            return protoResponse;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error: HResourceGrpcService -> Delete(....)");
+            throw new RpcException(new Status(StatusCode.Internal, "Failed to delete employee"));
         }
     }
 }

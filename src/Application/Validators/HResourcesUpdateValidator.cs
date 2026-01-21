@@ -3,10 +3,13 @@ using HumanResourceService.src.Application.DTOs.Commands;
 
 namespace HumanResourceService.src.Application.Validators;
 
-public sealed class HResourcesCreateValidator : AbstractValidator<HResourcesCreateRequest>
+public sealed class HResourcesUpdateValidator : AbstractValidator<HResourcesUpdateRequest>
 {
-    public HResourcesCreateValidator()
+    public HResourcesUpdateValidator()
     {
+        RuleFor(v => v.Id)
+            .NotEmpty();
+
         RuleFor(v => v.FullName)
             .NotEmpty()
             .Length(2, 25);

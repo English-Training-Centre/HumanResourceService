@@ -9,6 +9,8 @@ import "google/protobuf/empty.proto";
 service HumanResourcesGrpc {
   rpc Create(GrpcHResourcesCreateRequest) returns (GrpcHResourcesCreateResponse);
   rpc GetAll(google.protobuf.Empty) returns (GrpcEmployeeGetAllResponse);
+  rpc Update(GrpcHResourcesUpdateRequest) returns (GrpcHResourcesResponseDTO);
+  rpc Delete(GrpcHResourcesDeleteRequest) returns (GrpcHResourcesResponseDTO);
 }
 
 message GrpcHResourcesCreateResponse {
@@ -35,6 +37,11 @@ message GrpcEmployeeGetAllResponse {
   repeated GrpcEmployeeWithUserGetResponse employees = 1;
 }
 
+message GrpcHResourcesResponseDTO {
+  bool isSuccess = 1;
+  string message = 2;
+}
+
 message GrpcHResourcesCreateRequest {
   string fullName = 1;
   string phoneNumber = 2;
@@ -42,4 +49,18 @@ message GrpcHResourcesCreateRequest {
   string roleId = 4;
   string position = 5;
   int64 subsidy = 6;
+}
+
+message GrpcHResourcesUpdateRequest {
+  string id = 1;
+  string fullName = 2;
+  string phoneNumber = 3;
+  optional string email = 4;
+  string roleId = 5;
+  string position = 6;
+  int64 subsidy = 7;
+}
+
+message GrpcHResourcesDeleteRequest {
+    string id = 1;
 }

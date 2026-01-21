@@ -3,10 +3,13 @@ using HumanResourceService.src.Application.DTOs.Commands;
 
 namespace HumanResourceService.src.Application.Validators;
 
-public sealed class HResourcesCreateValidator : AbstractValidator<HResourcesCreateRequest>
+public sealed class UserServiceUpdateValidator : AbstractValidator<UserServiceUpdateRequest>
 {
-    public HResourcesCreateValidator()
+    public UserServiceUpdateValidator()
     {
+        RuleFor(v => v.Id)
+            .NotEmpty();
+
         RuleFor(v => v.FullName)
             .NotEmpty()
             .Length(2, 25);
@@ -16,12 +19,6 @@ public sealed class HResourcesCreateValidator : AbstractValidator<HResourcesCrea
             .MaximumLength(20);
 
         RuleFor(v => v.RoleId)
-            .NotEmpty();
-
-        RuleFor(v => v.Position)
-            .NotEmpty();
-
-        RuleFor(v => v.Subsidy)
             .NotEmpty();
     }
 }

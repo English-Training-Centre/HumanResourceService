@@ -48,13 +48,13 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
                             Password = userClient.Password
                         },
 
-                _ => new HResourcesCreateResponse { IsSuccess = false }
+                _ => new HResourcesCreateResponse { IsSuccess = false, Message = userClient.Message }
             };
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, " - An unexpected error occurred...");
-            return new HResourcesCreateResponse { IsSuccess = false };
+            return new HResourcesCreateResponse { IsSuccess = false, Message = "An unexpected error occurred..." };
         }
     }
 
@@ -93,8 +93,88 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
                 Position: e.Position,
                 Subsidy: e.Subsidy
             );
-        }).ToList();
+        })
+        .OrderBy(r => r.FullName)
+        .ToList();
 
         return result;
+    }
+
+    public async Task<ResponseDTO> UpdateAsync(HResourcesUpdateRequest request, CancellationToken ct)
+    {
+        var employeeRequest = new EmployeeUpdateRequest
+        (
+            request.Id,
+            request.Position,
+            request.Subsidy
+        );
+
+        try
+        {
+            var userId = await _employeeRepository.UpdateAsync(employeeRequest, ct);
+
+            if (userId.Equals(Guid.Empty))
+            {
+                return new ResponseDTO { IsSuccess = false, Message = "Failed to update employee. User ID is null..." };
+            }
+            else
+            {
+                var userClientRequest = new UserServiceUpdateRequest
+                (
+                    userId,
+                    request.FullName,
+                    request.PhoneNumber,
+                    request.Email,
+                    request.RoleId
+                );
+
+                var userClient = await _userClient.Update(userClientRequest, ct);
+
+                return new ResponseDTO
+                {
+                    IsSuccess = userClient.IsSuccess,
+                    Message = userClient.Message
+                };
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, " - An unexpected error occurred...");
+            return new ResponseDTO { IsSuccess = false, Message = "An unexpected error occurred..." };
+        }
+    }
+
+    public async Task<ResponseDTO> DeleteAsync(Guid id, CancellationToken ct)
+    {
+        if (id == Guid.Empty)
+        {
+            _logger.LogWarning("Employee ID is empty or invalid");
+            return new ResponseDTO { IsSuccess = false, Message = "Invalid employee ID." };
+        }
+
+        try
+        {
+            var userId = await _employeeRepository.DeleteAsync(id, ct);
+
+            if (userId.Equals(Guid.Empty))
+            {
+                return new ResponseDTO { IsSuccess = false, Message = "Failed to delete. User ID is null..." };
+            }
+            else
+            {
+                var userClient = await _userClient.Delete(userId, ct);
+
+                return new ResponseDTO
+                {
+                    IsSuccess = userClient.IsSuccess,
+                    Message = userClient.Message
+                };
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, " - An unexpected error occurred...");
+            return new ResponseDTO { IsSuccess = false, Message = "An unexpected error occurred..." };
+        }
     }
 }
