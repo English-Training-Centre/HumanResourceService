@@ -4,5 +4,5 @@ public sealed record EmployeeCreateRequest
 (
     Guid UserId,
     string Position,
-    decimal Subsidy
+    long Subsidy
 );

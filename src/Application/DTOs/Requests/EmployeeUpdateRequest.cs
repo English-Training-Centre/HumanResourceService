@@ -4,5 +4,5 @@ public sealed record EmployeeUpdateRequest
 (
     Guid Id,
     string Position,
-    decimal Subsidy
+    long Subsidy
 );
