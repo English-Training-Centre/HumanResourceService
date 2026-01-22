@@ -1,9 +1,9 @@
 using FluentValidation;
-using HumanResourceService.src.Application.DTOs.Commands;
+using Libs.Core.Internal.src.DTOs.Requests;
 
 namespace HumanResourceService.src.Application.Validators;
 
-public sealed class UserServiceUpdateValidator : AbstractValidator<UserServiceUpdateRequest>
+public sealed class UserServiceUpdateValidator : AbstractValidator<UserUpdateRequest>
 {
     public UserServiceUpdateValidator()
     {

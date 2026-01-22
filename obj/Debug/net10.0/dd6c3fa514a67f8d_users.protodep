@@ -1,2 +1,0 @@
-obj/Debug/net10.0/Users.cs \
-obj/Debug/net10.0/UsersGrpc.cs: ../UserService/Protos/users.proto

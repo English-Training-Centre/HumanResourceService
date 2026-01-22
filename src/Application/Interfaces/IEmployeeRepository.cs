@@ -1,5 +1,5 @@
-using HumanResourceService.src.Application.DTOs.Commands;
-using HumanResourceService.src.Application.DTOs.Queries;
+using HumanResourceService.src.Application.DTOs.Requests;
+using HumanResourceService.src.Application.DTOs.Responses;
 
 namespace HumanResourceService.src.Application.Interfaces;
 

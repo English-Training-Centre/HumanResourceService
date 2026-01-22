@@ -1,4 +1,4 @@
-namespace HumanResourceService.src.Application.DTOs.Queries;
+namespace HumanResourceService.src.Application.DTOs.Responses;
 
 public sealed record EmployeeGetAllResponse
 {

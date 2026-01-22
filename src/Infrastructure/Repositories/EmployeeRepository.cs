@@ -1,6 +1,6 @@
 using Dapper;
-using HumanResourceService.src.Application.DTOs.Commands;
-using HumanResourceService.src.Application.DTOs.Queries;
+using HumanResourceService.src.Application.DTOs.Requests;
+using HumanResourceService.src.Application.DTOs.Responses;
 using HumanResourceService.src.Application.Interfaces;
 using Npgsql;
 

@@ -1,4 +1,4 @@
-namespace HumanResourceService.src.Application.DTOs.Commands;
+namespace HumanResourceService.src.Application.DTOs.Requests;
 
 public sealed record EmployeeUpdateRequest
 (

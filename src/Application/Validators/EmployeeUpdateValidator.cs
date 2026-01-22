@@ -1,5 +1,5 @@
 using FluentValidation;
-using HumanResourceService.src.Application.DTOs.Commands;
+using HumanResourceService.src.Application.DTOs.Requests;
 
 namespace HumanResourceService.src.Application.Validators;
 

@@ -3,7 +3,6 @@ using FluentValidation.AspNetCore;
 using Npgsql;
 using HumanResourceService.src.Application.Interfaces;
 using HumanResourceService.src.Infrastructure.Persistence;
-using UserService;
 using System.IO.Compression;
 using Polly;
 using Grpc.Net.Compression;
@@ -11,6 +10,9 @@ using HumanResourceService.src.Infrastructure.Services;
 using HumanResourceService.src.Infrastructure.Repositories;
 using HumanResourceService.src.Application.Handlers;
 using HumanResourceService.Services;
+using Libs.Core.Internal.src.Interfaces;
+using Libs.Core.Internal.Protos.UserService;
+using Libs.Core.Public.src.Interfaces;
 
 namespace HumanResourceService.src.Configuration;
 
@@ -37,9 +39,9 @@ public static class MiddlewareConfig
                     .AddNpgSql(nd => nd.GetRequiredService<NpgsqlDataSource>());
 
             services.AddScoped<IPostgresDB, PostgresDB>();
-            services.AddScoped<IUserGrpcServiceClient, UserGrpcServiceClient>();
+            services.AddScoped<IUserGrpcService, UserGrpcServiceClient>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            services.AddScoped<IEmployeeHandler, EmployeeHandler>();
+            services.AddScoped<IHResourceGrpcService, EmployeeHandler>();
 
             services.AddGrpcClient<UsersGrpc.UsersGrpcClient>(op =>
             {

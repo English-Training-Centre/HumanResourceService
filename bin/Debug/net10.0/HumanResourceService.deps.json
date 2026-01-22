@@ -13,6 +13,8 @@
           "FluentValidation.AspNetCore": "11.3.1",
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "Grpc.AspNetCore": "2.76.0",
+          "Libs.Core.Internal": "1.0.0",
+          "Libs.Core.Public": "1.0.0",
           "Microsoft.Extensions.Http.Polly": "10.0.2",
           "Npgsql": "10.0.1",
           "Polly": "8.6.5"
@@ -198,6 +200,38 @@
             "fileVersion": "3.0.0.0"
           }
         }
+      },
+      "Libs.Core.Internal/1.0.0": {
+        "dependencies": {
+          "Grpc.AspNetCore": "2.76.0",
+          "Libs.Core.Shared": "1.0.0"
+        },
+        "runtime": {
+          "Libs.Core.Internal.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Libs.Core.Public/1.0.0": {
+        "dependencies": {
+          "Grpc.AspNetCore": "2.76.0",
+          "Libs.Core.Shared": "1.0.0"
+        },
+        "runtime": {
+          "Libs.Core.Public.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Libs.Core.Shared/1.0.0": {
+        "runtime": {
+          "Libs.Core.Shared.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -332,6 +366,21 @@
       "sha512": "sha512-drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
       "path": "polly.extensions.http/3.0.0",
       "hashPath": "polly.extensions.http.3.0.0.nupkg.sha512"
+    },
+    "Libs.Core.Internal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Libs.Core.Public/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Libs.Core.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

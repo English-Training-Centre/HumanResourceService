@@ -1,18 +1,23 @@
-using HumanResourceService.src.Application.DTOs.Commands;
-using HumanResourceService.src.Application.DTOs.Queries;
+using HumanResourceService.src.Application.DTOs.Requests;
 using HumanResourceService.src.Application.Interfaces;
+using Libs.Core.Internal.src.DTOs.Requests;
+using Libs.Core.Internal.src.Interfaces;
+using Libs.Core.Public.src.DTOs.Requests;
+using Libs.Core.Public.src.DTOs.Responses;
+using Libs.Core.Public.src.Interfaces;
+using Libs.Core.Shared.src.DTOs.Responses;
 
 namespace HumanResourceService.src.Application.Handlers;
 
-public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUserGrpcServiceClient userClient, ILogger<EmployeeHandler> logger) : IEmployeeHandler
+public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUserGrpcService userClient, ILogger<EmployeeHandler> logger) : IHResourceGrpcService
 {
     private readonly IEmployeeRepository _employeeRepository = employeeRepository;
-    private readonly IUserGrpcServiceClient _userClient = userClient;
+    private readonly IUserGrpcService _userClient = userClient;
     private readonly ILogger<EmployeeHandler> _logger = logger;
 
     public async Task<HResourcesCreateResponse> CreateAsync(HResourcesCreateRequest request, CancellationToken ct)
     {
-        var userClientRequest = new UserServiceCreateRequest
+        var userClientRequest = new UserCreateRequest
         (
             request.FullName,
             request.PhoneNumber,
@@ -22,7 +27,7 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
 
         try
         {
-            var userClient = await _userClient.Create(userClientRequest, ct);
+            var userClient = await _userClient.CreateAsync(userClientRequest, ct);
 
             if (!userClient.IsSuccess || userClient.UserId.Equals(Guid.Empty) || userClient.Username is null || userClient.Password is null)
             {
@@ -58,7 +63,7 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
         }
     }
 
-    public async Task<IReadOnlyList<EmployeeWithUserGetResponse>> GetAllWithUserAsync(CancellationToken ct)
+    public async Task<IReadOnlyList<HResourcesGetAllResponse>> GetAllWithUserAsync(CancellationToken ct)
     {
         var employees = (await _employeeRepository.GetAllAsync(ct)).ToList();
 
@@ -71,7 +76,7 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
             .Distinct() // elimina duplicados
             .ToList();
 
-        var users = await _userClient.GetAllByIds(userIds, ct);
+        var users = await _userClient.GetAllByIdsAsync(userIds, ct);
 
         // Mapear usuários por Id para merge rápido
         var usersById = users.ToDictionary(u => u.Id, u => u);
@@ -81,18 +86,19 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
         {
             usersById.TryGetValue(e.UserId, out var user);
 
-            return new EmployeeWithUserGetResponse(
-                Id: e.Id,
-                FullName: user?.FullName,
-                Username: user?.Username,
-                PhoneNumber: user?.PhoneNumber,
-                Email: user?.Email,
-                Role: user?.Role,
-                ImageUrl: user?.ImageUrl,
-                IsActive: user?.IsActive ?? false,
-                Position: e.Position,
-                Subsidy: e.Subsidy
-            );
+            return new HResourcesGetAllResponse
+            {
+                Id = e.Id,
+                FullName = user!.FullName,
+                Username = user.Username,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                Role = user.Role,
+                ImageUrl = user.ImageUrl,
+                IsActive = user.IsActive,
+                Position = e.Position,
+                Subsidy = e.Subsidy
+            };
         })
         .OrderBy(r => r.FullName)
         .ToList();
@@ -119,16 +125,16 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
             }
             else
             {
-                var userClientRequest = new UserServiceUpdateRequest
+                var userClientRequest = new UserUpdateRequest
                 (
                     userId,
                     request.FullName,
-                    request.PhoneNumber,
                     request.Email,
+                    request.PhoneNumber,                    
                     request.RoleId
                 );
 
-                var userClient = await _userClient.Update(userClientRequest, ct);
+                var userClient = await _userClient.UpdateAsync(userClientRequest, ct);
 
                 return new ResponseDTO
                 {
@@ -162,7 +168,7 @@ public sealed class EmployeeHandler(IEmployeeRepository employeeRepository, IUse
             }
             else
             {
-                var userClient = await _userClient.Delete(userId, ct);
+                var userClient = await _userClient.DeleteAsync(userId, ct);
 
                 return new ResponseDTO
                 {
