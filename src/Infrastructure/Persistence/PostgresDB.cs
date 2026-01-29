@@ -49,25 +49,6 @@ public sealed class PostgresDB : IPostgresDB
         });
     }
 
-    public async Task<T?> QueryFirstOrDefaultAsync<T>(
-        string sql,
-        object? parameters = null,
-        CancellationToken cancellationToken = default)
-    {
-        return await _retryPolicy.ExecuteAsync(async () =>
-        {
-            await using var conn = await _dataSource.OpenConnectionAsync(cancellationToken);
-
-            var result = await conn.QueryFirstOrDefaultAsync<T>(
-                new CommandDefinition(
-                    sql,
-                    parameters,
-                    cancellationToken: cancellationToken));
-
-            return result;
-        });
-    }
-
     public async Task<int> ExecuteAsync(
         string sql,
         object? parameters = null,
@@ -77,29 +58,6 @@ public sealed class PostgresDB : IPostgresDB
         {
             await using var conn = await _dataSource.OpenConnectionAsync(cancellationToken);
             return await conn.ExecuteAsync(sql, parameters);
-        });
-    }
-
-    public async Task<TResult> ExecuteInTransactionAsync<TResult>(
-        Func<NpgsqlConnection, NpgsqlTransaction, Task<TResult>> action,
-        CancellationToken cancellationToken = default)
-    {
-        return await _retryPolicy.ExecuteAsync(async () =>
-        {
-            await using var conn = await _dataSource.OpenConnectionAsync(cancellationToken);
-            await using var tx = await conn.BeginTransactionAsync(cancellationToken);
-
-            try
-            {
-                var result = await action(conn, tx);
-                await tx.CommitAsync(cancellationToken);
-                return result;
-            }
-            catch
-            {
-                await tx.RollbackAsync(cancellationToken);
-                throw;
-            }
         });
     }
 

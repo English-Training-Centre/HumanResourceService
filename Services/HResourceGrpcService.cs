@@ -17,18 +17,18 @@ public sealed class HResourceGrpcService(IHResourceGrpcService employeeHandler, 
             throw new RpcException(new Status(StatusCode.Internal, "Role ID Invalid..."));
         }
 
+        var parameter = new HResourcesCreateRequest
+        (
+            request.FullName,
+            request.PhoneNumber,
+            request.Email, 
+            roleId,               
+            request.Position,
+            request.Subsidy
+        );
+
         try
         {
-            var parameter = new HResourcesCreateRequest
-            (
-                request.FullName,
-                request.PhoneNumber,
-                request.Email, 
-                roleId,               
-                request.Position,
-                request.Subsidy
-            );
-
             var result = await _employeeHandler.CreateAsync(parameter, context.CancellationToken);
 
             var protoResponse = new GrpcHResourcesCreateResponse
